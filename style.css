@@ -1,9 +1,121 @@
 body{
-    background-color: burlywood
+    background-color: rgb(118, 186, 218);
+    color: white;
 }
 
 .main{
-    background-color: brown !important;
-    width: 100%;
-    
+    background-color: rgb(72, 115, 192);
+    height: 100%;
+    display: flex;
+    justify-content:space-evenly;
 }
+
+img{
+    width: 100%;
+}
+
+.szovegesKereses{
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 4px;
+}
+
+
+.szovegesKereses:focus {
+    border-color: rgb(21, 0, 255);
+    box-shadow: 0 0 5px rgba(64, 0, 255, 0.5);
+}
+
+
+.szovegesKereses:hover {
+    border-color: rgb(153, 153, 153);
+}
+
+.szovegesKereses::placeholder {
+    color: rgb(153, 153, 153);
+    text-align: center;
+}
+
+/* az alap cuccot leszedni kellene */
+.szovegesKereses:focus,
+.szovegesKereses:hover,
+.szovegesKereses:active {
+    outline: none;
+}
+
+
+.dropbtn{
+    border-radius: 5px;
+    border: none;
+    margin: 4px;
+}
+
+.dropdown {
+    margin: 4px;
+    display: inline-block;
+}
+
+
+.dropdown-content {
+    margin: 4px;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: inset 0px 0px 2px 2px;
+}
+
+
+.dropdown-content p {
+    color: black;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+
+.dropdown-content p:active {
+    box-shadow: inset 0px 0px 2px 2px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    margin: 0px;
+}
+
+.kivalasztottKategoria{
+    background-color: rgb(72, 115, 192);
+}
+
+.kivalasztottKategoria:hover{
+    background-color: rgb(118, 186, 218);
+}
+
+.kivalasztottKategoria{
+    color: white !important;
+}
+
+.year{
+    margin: 7px;
+    display: inline-block;
+}
+
+#year{
+    display: inline-block;
+}
+
+.mitKeress{
+    height: 30px;
+    margin: 4px;
+}
+
+.reset{
+    height: 30px;
+    margin: 4px;
+}
+
