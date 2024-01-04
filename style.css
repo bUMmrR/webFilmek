@@ -5,16 +5,44 @@ body{
 
 .main{
     background-color: rgb(72, 115, 192);
-    height: 100%;
     display: flex;
     justify-content:space-evenly;
 }
 
-img{
+
+
+.filmek{
+    background-color: #f9f9f922;
+    border-radius: 25px;
+    margin-top: 15px;
+    color: black;
+}
+
+.textDiv{
+    width: 75%;
+}
+
+.textDiv h2{
+    margin: 10px;
+    text-align: center;
+}
+
+.textDiv p {
+    text-align: justify;
+}
+
+
+.imgDiv{
+    width: 25%;
+}
+
+.imgDiv img{
+    margin: 10px;
     width: 100%;
 }
 
 .szovegesKereses{
+    height: 32px;
     border: 1px solid rgb(204, 204, 204);
     border-radius: 5px;
     font-size: 16px;
@@ -119,3 +147,8 @@ img{
     margin: 4px;
 }
 
+h1{
+    color: black;
+    text-align: center;
+    margin: 40px;
+}

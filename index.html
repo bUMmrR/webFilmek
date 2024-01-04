@@ -14,46 +14,46 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-2 hirdetes">
-                <img src="kepek/favicon.png" alt="">
 
             </div> 
+            <div class="col-8">
 
-            <header class="col-8 main" id="main">
-                <!-- a fo kereso field -->
-                <input type="text" name="szovegesKereses" id="szovegesKereses" placeholder="Cím" class="szovegesKereses" oninput="filmekKigyujtese()">
 
-                <!-- hogy szinesz vagy cim -->
-                <select id="mitKeress" class="mitKeress" onchange="mitKeressValtozas(this)">
-                    <option value="cim">Cím</option>
-                    <option value="szinesz">Színész</option>
-                </select>
+                <header class="main" id="main">
+                    <!-- a fo kereso field -->
+                    <input type="text" name="szovegesKereses" id="szovegesKereses" placeholder="Cím" class="szovegesKereses" oninput="filmekKigyujtese()">
 
-                <!-- kategoria valaszto -->
-                <div class="dropdown">
-                    <button class="dropbtn">Válasz kategoriát</button>
-                    <div class="dropdown-content" id ="dropdown-content">
+                    <!-- hogy szinesz vagy cim -->
+                    <select id="mitKeress" class="mitKeress" onchange="mitKeressValtozas(this)">
+                        <option value="cim">Cím</option>
+                        <option value="szinesz">Színész</option>
+                    </select>
+
+                    <!-- kategoria valaszto -->
+                    <div class="dropdown">
+                        <button class="dropbtn">Válasz kategoriát</button>
+                        <div class="dropdown-content" id ="dropdown-content">
+
+                        </div>
+                    </div>
+                    
+                    <!-- az ev valaszto -->
+                    <div id="year">
 
                     </div>
-                </div>
-                
-                <!-- az ev valaszto -->
-                <div id="year">
 
-                </div>
+                    <!-- reset gomb -->
+                    <input type="button" class="reset" value="Reset" onclick="location.reload()">
+                </header>
 
-                <!-- reset gomb -->
-                <input type="button" class="reset" value="Reset" onclick="location.reload()">
-            </header>
+                <!-- a filmek ide fognak kerulni -->
+                <content id="content">
 
-            <!-- a filmek ide fognak kerulni -->
-            <content>
-
-            </content>
+                </content>
+            </div>
 
 
-            <div class="col-8 hirdetes">
-
-
+            <div class="col-2 hirdetes">
             </div>
         </div>
     </div>

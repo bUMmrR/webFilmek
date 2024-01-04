@@ -19,6 +19,7 @@ function main(){
     kategoriakKigyujtese();
     dropDownKategoriak();
     evekKigyujtese();
+    filmekKigyujtese();
 }
 
 function dropDownKategoriak(){
@@ -89,6 +90,7 @@ function evekKigyujtese(){
         var input = document.createElement("input");
         input.type = "radio"
         input.name = "evek";
+        input.setAttribute("onchange","filmekKigyujtese()")
         input.id = evek[i];
         var label = document.createElement("label")
         label.htmlFor = evek[i];
@@ -113,24 +115,82 @@ function filmekKigyujtese(){
             joFilmek = joFilmek.filter(c => c.title.toLowerCase().includes(input.value.toLowerCase()))
         }
         else{
-            // szineszeket keresunk
-            joFilmek = joFilmek.filter(c => c.cast.some().includes())
 
-
-            joFilmek = json.filter(c => c.cast.toLowerCase().some(genre => jelenlegKivalasztottKategoriak.includes(genre)));
+            joFilmek = joFilmek.filter(movie =>
+                movie.cast.some(actor => actor.toLowerCase().includes(input.value.toLowerCase()))
+            );
 
         }
     }
     if (jelenlegKivalasztottKategoriak.length != 0) {
-        var joFilmek = json.filter(c => c.genres.some(genre => jelenlegKivalasztottKategoriak.includes(genre)));
+        joFilmek = joFilmek.filter(c => c.genres.some(genre => jelenlegKivalasztottKategoriak.includes(genre)));
     }
 
+    if (radioExtract = document.querySelector('input[name="evek"]:checked')) {
+        joFilmek = joFilmek.filter(c => c.year == document.querySelector('input[name="evek"]:checked').id);
+    }
+
+    filmekKimutatasa(joFilmek);
     console.log(joFilmek)
 }
 
+function filmekKimutatasa(joFilmek){
+    var content = document.getElementById("content")
+    if (joFilmek.length == 0) {
+        content.innerHTML = "<h1>Sajnos nem található a feltételeknek megefelelő film</h1>"
+    }
+    else{
+        content.innerHTML = "";
+        for (let i = 0; i < joFilmek.length && i < 50; i++) {
+            var el = joFilmek[i];
+            var img = document.createElement("img");
+            var desc = document.createElement("p")
+            var title = document.createElement("h2")
+            var cast = document.createElement("ul")
+
+            if (el.hasOwnProperty("thumbnail")) {
+                img.src = el.thumbnail;
+            }
+            desc.innerText = el.extract;
+            title.innerText = el.title + " (" + el.year+")";
+            for (let j = 0; j < el.cast.length; j++) {
+                var li = document.createElement("li");
+                li.innerText = el.cast[j];
+                cast.appendChild(li);
+            }
+            var mainDiv = document.createElement("div");
+            var imgDiv = document.createElement("div");
+            var textDiv = document.createElement("div");
+            var a = document.createElement("a");
+
+            a.setAttribute("href","https://en.wikipedia.org/wiki/"+el.href)
+            a.setAttribute("target","_blank")
+
+            a.appendChild(img)
+            imgDiv.appendChild(a)
+            imgDiv.classList += "imgDiv"
+
+            textDiv.appendChild(title)
+            textDiv.appendChild(desc)
+            textDiv.appendChild(cast)
+            textDiv.classList+= "textDiv"
+
+            mainDiv.appendChild(imgDiv);
+            mainDiv.appendChild(textDiv);
+
+            mainDiv.classList += "filmek";
+            mainDiv.classList += " row";
+
+            content.appendChild(mainDiv);
+        }
+        if (joFilmek.length > 50) {
+            console.log("teszt")
+            content.innerHTML += "<h1>Még találtunk tőbb filmet ami megfelel a feltélekenek csak nem tudjuk megjeleniteni, próbálj pontosabban keresni"
+        }
+    }
+}
 
 function mitKeressValtozas(option){
     document.getElementById("szovegesKereses").setAttribute("placeholder",option.options[option.selectedIndex].text)
-
     filmekKigyujtese();
 }
