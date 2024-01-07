@@ -141,6 +141,7 @@ function filmekKimutatasa(joFilmek){
     }
     else{
         content.innerHTML = "";
+
         for (let i = 0; i < joFilmek.length && i < 50; i++) {
             var el = joFilmek[i];
             var img = document.createElement("img");
